@@ -1,0 +1,31 @@
+Script started on 2025-12-21 17:12:37+03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="102" LINES="51"]
+[?2004h]0;root@my-vm-lesson4: ~/newroot@my-vm-lesson4:~/new# [7msystemctl status my-nginx[27msystemctl status my-nginx
+[?2004l[?1h=[0;1;32m●[0m my-nginx.service - My Nginx Service[m
+     Loaded: loaded (]8;;file://my-vm-lesson4/etc/systemd/system/my-nginx.service/etc/systemd/system/my-nginx.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)[m
+     Active: [0;1;32mactive (running)[0m since Sun 2025-12-21 17:11:55 MSK; 48s ago[m
+    Process: 9252 ExecStartPre=/usr/sbin/nginx -t (code=exited, status=0/SUCCESS)[m
+    Process: 9254 ExecStart=/usr/sbin/nginx (code=exited, status=0/SUCCESS)[m
+   Main PID: 9255 (nginx)[m
+      Tasks: 2 (limit: 1116)[m
+     Memory: 1.8M (peak: 2.0M)[m
+        CPU: 16ms[m
+     CGroup: /system.slice/my-nginx.service[m
+             ├─[0;38;5;245m9255 "nginx: master process /usr/sbin/nginx"[0m[m
+             └─[0;38;5;245m9256 "nginx: worker process"[0m[m
+[m
+Dec 21 17:11:55 my-vm-lesson4 systemd[1]: Starting my-nginx.service - My Nginx Service...[m
+Dec 21 17:11:55 my-vm-lesson4 nginx[9252]: nginx: the configuration file /etc/nginx/nginx.conf syntax[m[7m>[27m
+Dec 21 17:11:55 my-vm-lesson4 nginx[9252]: nginx: configuration file /etc/nginx/nginx.conf test is su[m[7m>[27m
+Dec 21 17:11:55 my-vm-lesson4 systemd[1]: Started my-nginx.service - My Nginx Service.[m
+[7mlines 1-17/17 (END)[27m[K[K[?1l>
+[?2004h]0;root@my-vm-lesson4: ~/newroot@my-vm-lesson4:~/new# [7mjournalctl -u my-nginx -n 20[27m[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cjournalctl -u my-nginx -n 20
+[?2004l[?1h=Dec 21 17:11:49 my-vm-lesson4 systemd[1]: [0;1;39m]8;;file://my-vm-lesson4/etc/systemd/system/my-nginx.service/etc/s[0;1;31m[0;1;39mystemd/system/my-nginx.service]8;;:7: PIDFile= references[m[7m>[27m
+Dec 21 17:11:55 my-vm-lesson4 systemd[1]: Starting my-nginx.service - My Nginx Service...[m
+Dec 21 17:11:55 my-vm-lesson4 nginx[9252]: nginx: the configuration file /etc/nginx/nginx.conf syntax[m[7m>[27m
+Dec 21 17:11:55 my-vm-lesson4 nginx[9252]: nginx: configuration file /etc/nginx/nginx.conf test is su[m[7m>[27m
+Dec 21 17:11:55 my-vm-lesson4 systemd[1]: Started my-nginx.service - My Nginx Service.[m
+[7mlines 1-5/5 (END)[27m[K[K[K[7mlines 1-5/5 (END)[27m[K[K[K[7mlines 1-5/5 (END)[27m[K[K[?1l>
+[?2004h]0;root@my-vm-lesson4: ~/newroot@my-vm-lesson4:~/new# exit
+[?2004lexit
+
+Script done on 2025-12-21 17:13:01+03:00 [COMMAND_EXIT_CODE="130"]
