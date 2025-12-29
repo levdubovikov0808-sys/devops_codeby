@@ -1,0 +1,22 @@
+client
+dev tun
+proto udp
+remote 37.200.70.25 1194
+resolv-retry infinite
+nobind
+
+user nobody
+group nogroup
+
+persist-key
+persist-tun
+
+ca /root/openvpn/ca.crt
+cert /root/openvpn/client1.crt
+key /root/openvpn/client1.key
+
+remote-cert-tls server
+cipher AES-128-CBC
+compress lz4-v2
+
+verb 3
