@@ -1,0 +1,16 @@
+# Vagrant
+.vagrant/
+
+# Shared folder (optional, but safe)
+shared/
+
+# IDE
+.idea/
+
+# Python
+__pycache__/
+*.pyc
+
+# OS
+.DS_Store
+Thumbs.db
