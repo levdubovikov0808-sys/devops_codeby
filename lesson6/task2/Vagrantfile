@@ -4,10 +4,8 @@
 Vagrant.configure("2") do |config|
   config.vm.box = "ubuntu/jammy64"
 
-  # Общая папка между всеми ВМ и хостом
   shared_dir = File.join(File.dirname(__FILE__), "shared")
 
-  # Создаём папку на хосте, если её нет
   FileUtils.mkdir_p(shared_dir) unless File.directory?(shared_dir)
 
   config.vm.define "server" do |server|
@@ -20,7 +18,6 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
     end
 
-    # Монтируем общую папку
     server.vm.synced_folder shared_dir, "/shared"
 
     server.vm.provision "shell", path: "server-setup.sh"
@@ -36,7 +33,6 @@ Vagrant.configure("2") do |config|
       vb.cpus = 2
     end
 
-    # Та же общая папка
     client.vm.synced_folder shared_dir, "/shared"
 
     client.vm.provision "shell", path: "client-setup.sh"
