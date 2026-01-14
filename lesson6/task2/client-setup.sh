@@ -1,0 +1,45 @@
+#!/bin/bash
+set -e
+
+# Ждём, пока сервер создаст ключ (максимум 60 сек)
+MAX_WAIT=60
+COUNT=0
+while [ ! -f /shared/server_private_key ]; do
+  if [ $COUNT -ge $MAX_WAIT ]; then
+    echo "ERROR: Timeout waiting for server private key!"
+    exit 1
+  fi
+  echo "Waiting for server private key... ($((COUNT+1))/$MAX_WAIT)"
+  sleep 2
+  COUNT=$((COUNT+1))
+done
+
+USER_HOME="/home/vagrant"
+
+mkdir -p "$USER_HOME/.ssh"
+cp /shared/server_private_key "$USER_HOME/.ssh/"
+chmod 600 "$USER_HOME/.ssh/server_private_key"
+chown -R vagrant:vagrant "$USER_HOME/.ssh"
+
+# Добавляем server в known_hosts
+ssh-keyscan -H 192.168.56.10 >> "$USER_HOME/.ssh/known_hosts" 2>/dev/null
+chown vagrant:vagrant "$USER_HOME/.ssh/known_hosts"
+
+# /etc/hosts
+echo "192.168.56.10 server" >> /etc/hosts
+echo "192.168.56.11 client" >> /etc/hosts
+
+# Опционально: создаём alias для удобства
+cat >> "$USER_HOME/.bashrc" <<EOF
+
+# Auto SSH to server
+alias ssh-server='ssh -i ~/.ssh/server_private_key vagrant@server'
+EOF
+
+echo "=== Client setup complete! ==="
+echo ""
+echo "To connect from client to server:"
+echo "1. Run: vagrant ssh client"
+echo "2. Then: ssh -i ~/.ssh/server_private_key vagrant@server"
+echo "   OR:  ssh-server (if you sourced .bashrc)"
+
