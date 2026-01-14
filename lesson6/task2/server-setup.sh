@@ -1,0 +1,33 @@
+#!/bin/bash
+set -e
+
+echo "=== Setting up SSH server ==="
+
+apt-get update
+apt-get install -y openssh-server
+
+# Правильное имя пользователя!
+USER_HOME="/home/vagrant"
+
+# Генерация ключа
+sudo -u vagrant ssh-keygen -t rsa -b 2048 -f "$USER_HOME/.ssh/id_rsa" -N "" -q
+
+# Добавление в authorized_keys
+cat "$USER_HOME/.ssh/id_rsa.pub" >> "$USER_HOME/.ssh/authorized_keys"
+chmod 600 "$USER_HOME/.ssh/authorized_keys"
+chown -R vagrant:vagrant "$USER_HOME/.ssh"
+
+# Копируем приватный ключ в общую папку
+cp "$USER_HOME/.ssh/id_rsa" /shared/server_private_key
+chmod 600 /shared/server_private_key
+chown vagrant:vagrant /shared/server_private_key
+
+# Отключаем парольную аутентификацию
+sed -i 's/#\?PasswordAuthentication.*/PasswordAuthentication no/' /etc/ssh/sshd_config
+systemctl restart ssh
+
+# Добавляем записи в /etc/hosts
+echo "192.168.56.10 server" >> /etc/hosts
+echo "192.168.56.11 client" >> /etc/hosts
+
+echo "=== Server setup complete! ==="
