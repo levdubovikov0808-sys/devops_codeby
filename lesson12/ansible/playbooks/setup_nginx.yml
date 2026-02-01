@@ -1,0 +1,25 @@
+---
+- name: Установка и настройка Nginx
+  hosts: webservers
+  become: yes
+  gather_facts: yes
+
+  tasks:
+    - name: Вывод информации об окружении
+      debug:
+        msg: "This host is in {{ environment }} environment"
+
+    - name: Установка пакетов wget, htop, nginx
+      apt:
+        name:
+          - wget
+          - htop
+          - nginx
+        state: present
+        update_cache: yes
+
+    - name: Запуск и включение Nginx
+      systemd:
+        name: nginx
+        state: started
+        enabled: yes
