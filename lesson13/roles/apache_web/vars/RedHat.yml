@@ -1,0 +1,17 @@
+---
+apache_package: httpd
+apache_service: httpd
+php_packages:
+  - php
+  - php-mysqlnd
+  - php-curl
+  - php-gd
+  - php-mbstring
+  - php-xml
+  - php-xmlrpc
+  - php-soap
+  - php-intl
+  - php-zip
+php_mysql_package: php-mysqlnd
+web_user: apache
+web_group: apache
