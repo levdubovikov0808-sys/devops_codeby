@@ -1,0 +1,37 @@
+---
+- name: Include OS-specific variables
+  include_vars: "{{ ansible_os_family }}.yml"
+
+- name: Install MySQL/MariaDB package
+  package:
+    name: "{{ mysql_package }}"
+    state: present
+  notify: restart mysql
+
+- name: Enable and start MySQL service
+  service:
+    name: "{{ mysql_service }}"
+    state: started
+    enabled: yes
+
+- name: Set MySQL root password for Debian/Ubuntu (first run)
+  command: mysqladmin -u root password "{{ mysql_root_password }}"
+  when: 
+    - ansible_os_family == "Debian"
+  ignore_errors: yes
+
+- name: Create MySQL database
+  mysql_db:
+    name: "{{ mysql_database }}"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
+
+- name: Create MySQL user
+  mysql_user:
+    name: "{{ mysql_user }}"
+    password: "{{ mysql_password }}"
+    priv: "{{ mysql_database }}.*:ALL"
+    state: present
+    login_user: root
+    login_password: "{{ mysql_root_password }}"
