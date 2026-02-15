@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="df75252c-1072-46a7-b55a-1efe9c5af6ce" name="Changes" comment="new commit">
+      <change beforePath="$PROJECT_DIR$/lesson10/script1.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson10/script2.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson11/script1.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson11/script2.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/action_cloud_init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/action_provision" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/action_set_name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/box_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/creator_uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/disk_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/index_uuid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/synced_folders" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/dev/virtualbox/vagrant_cwd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/action_cloud_init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/action_provision" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/action_set_name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/box_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/creator_uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/disk_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/index_uuid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/synced_folders" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/machines/prod/virtualbox/vagrant_cwd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/.vagrant/rgloader/loader.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/Vagrantfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/ansible/ansible.cfg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/ansible/env/dev/hosts.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/ansible/env/prod/hosts.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson12/ansible/playbooks/setup_nginx.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/inventory.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/playbook.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/apache_web/defaults/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/apache_web/tasks/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/apache_web/templates/wp-config.php.j2" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/apache_web/vars/Debian.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/apache_web/vars/RedHat.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/defaults/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/handlers/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/tasks/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/vars/Debian.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/vars/RedHat.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson13/roles/mysql_db/vars/main.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform.lock.hcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/hashicorp/null/3.2.4/linux_amd64/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/hashicorp/null/3.2.4/linux_amd64/terraform-provider-null_v3.2.4_x5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/hashicorp/random/3.8.1/linux_amd64/LICENSE.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/hashicorp/random/3.8.1/linux_amd64/terraform-provider-random_v3.8.1_x5" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/selectel/selectel/6.8.0/linux_amd64/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/selectel/selectel/6.8.0/linux_amd64/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/selectel/selectel/6.8.0/linux_amd64/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/selectel/selectel/6.8.0/linux_amd64/terraform-provider-selectel_v6.8.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/terraform-provider-openstack_v2.1.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/.terraform.lock.hcl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/CHANGELOG.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/.terraform/providers/registry.terraform.io/terraform-provider-openstack/openstack/2.1.0/linux_amd64/terraform-provider-openstack_v2.1.0" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/import.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/terraform.tfstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/import-config/terraform.tfvars.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/instances.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/network.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/outputs.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/providers.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/security.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/terraform.tfstate" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/terraform.tfstate.backup" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/variables.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson14/versions.tf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson3/common_file" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson3/same_name.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson3/unique_file_a.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/action_cloud_init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/action_provision" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/action_set_name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/box_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/creator_uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/disk_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/index_uuid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/private_key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/synced_folders" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/server/virtualbox/vagrant_cwd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/action_cloud_init" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/action_provision" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/action_set_name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/box_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/creator_uid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/disk_meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/id" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/index_uuid" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/private_key" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/synced_folders" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/machines/store/virtualbox/vagrant_cwd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/.vagrant/rgloader/loader.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/Vagrantfile" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lesson9/backup_mysql.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test.py" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="lesson11-clean" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;levdubovikov0808-sys&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/levdubovikov0808-sys/devops_codeby.git&quot;,
+    &quot;accountId&quot;: &quot;a03883be-4920-41d5-8471-df29f5430c7f&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
+  <component name="ProjectId" id="36kvTyIDAY9aUZbpWZGOXPmdwwV" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\levdu\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lesson15&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson6&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\levdu\PycharmProjects\PythonProjectd\PythonProject\devops\lesson6" />
+      <recent name="C:\Users\levdu\PycharmProjects\PythonProjectd\PythonProject\devops\lesson5" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="script1.sh" type="ShConfigurationType" temporary="true">
+      <option name="SCRIPT_TEXT" value="" />
+      <option name="INDEPENDENT_SCRIPT_PATH" value="true" />
+      <option name="SCRIPT_PATH" value="$PROJECT_DIR$/lesson10/script1.sh" />
+      <option name="SCRIPT_OPTIONS" value="" />
+      <option name="INDEPENDENT_SCRIPT_WORKING_DIRECTORY" value="true" />
+      <option name="SCRIPT_WORKING_DIRECTORY" value="$PROJECT_DIR$/lesson10" />
+      <option name="INDEPENDENT_INTERPRETER_PATH" value="true" />
+      <option name="INTERPRETER_PATH" value="/bin/bash" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="EXECUTE_IN_TERMINAL" value="true" />
+      <option name="EXECUTE_SCRIPT_FILE" value="true" />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Shell Script.script1.sh" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-ce6832f46686-7b97d883f26b-com.jetbrains.pycharm.pro.sharedIndexes.bundled-PY-252.25557.178" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="df75252c-1072-46a7-b55a-1efe9c5af6ce" name="Changes" comment="" />
+      <created>1765563396559</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1765563396559</updated>
+    </task>
+    <task id="LOCAL-00001" summary="new commit">
+      <option name="closed" value="true" />
+      <created>1765563937778</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1765563937778</updated>
+    </task>
+    <task id="LOCAL-00002" summary="new commit">
+      <option name="closed" value="true" />
+      <created>1765564200805</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1765564200805</updated>
+    </task>
+    <task id="LOCAL-00003" summary="new commit">
+      <option name="closed" value="true" />
+      <created>1765992909573</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765992909573</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="lesson5" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="new commit" />
+  </component>
+</project>

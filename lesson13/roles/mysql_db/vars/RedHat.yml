@@ -1,3 +1,0 @@
----
-mysql_package: mariadb-server
-mysql_service: mariadb

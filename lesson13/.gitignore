@@ -1,4 +1,0 @@
-*.retry
-*.log
-.vagrant/
-.DS_Store
