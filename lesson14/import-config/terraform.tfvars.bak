@@ -1,0 +1,7 @@
+domain_name = "294880"        # ID аккаунта Selectel
+tenant_id   = "465a79df6c58490e86483df0c6132c8f"     # ID проекта (можно взять из панели управления)
+user_name   = "Terraform"  # имя сервисного пользователя
+password    = ",,RE::G[9wcy7hS~v>xu"        # пароль сервисного пользователя
+region      = "ru-9"          # ваш регион
+
+
