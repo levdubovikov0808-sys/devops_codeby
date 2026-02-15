@@ -1,0 +1,5 @@
+---
+mysql_database: wordpress
+mysql_user: wordpress_user
+mysql_password: wordpress_password
+mysql_root_password: ChangeMe123!
