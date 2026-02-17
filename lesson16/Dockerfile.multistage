@@ -1,0 +1,27 @@
+# ---- Стадия сборки (builder) ----
+FROM node:16 AS builder
+
+WORKDIR /build
+
+# Копируем только файлы с зависимостями
+COPY app/package*.json ./
+
+# Устанавливаем зависимости
+RUN npm install
+
+# Копируем остальной исходный код приложения
+COPY app/ .
+
+# ---- Финальная стадия (runtime) ----
+FROM node:16-alpine
+
+WORKDIR /app
+
+# Копируем собранные модули и код из builder
+COPY --from=builder /build /app
+
+# Открываем порт, который слушает приложение (в node-hello это 3000)
+EXPOSE 3000
+
+# Запускаем index.js (основной файл приложения)
+CMD ["node", "index.js"]
