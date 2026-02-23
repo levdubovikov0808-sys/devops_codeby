@@ -1,0 +1,6 @@
+.idea/
+*.iml
+lesson18/db_data/
+lesson18/wp_data/
+*.sock
+*.log
