@@ -1,0 +1,56 @@
+Script started on 2026-02-23 11:11:59+03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="64" LINES="37"]
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker network create wp-net[27mdocker network create wp-net
+[?2004lError response from daemon: network with name wp-net already exists
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker volume create wp-db[27mdocker volume create wp-db
+[?2004lwp-db
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker volume create wp-data[27mdocker volume create wp-data
+[?2004lwp-data
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker run -d \[27m
+[7m  --name mysql-db \[27m
+[7m  --network wp-net \[27m
+[7m  -v wp-db:/var/lib/mysql \[27m
+[7m  -e MYSQL_ROOT_PASSWORD=rootpassword \[27m
+[7m  -e MYSQL_DATABASE=wordpress \[27m
+[7m  -e MYSQL_USER=wpuser \[27m
+[7m  -e MYSQL_PASSWORD=wppassword \[27m
+[7m  mysql:5.7[27m[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cdocker run -d \
+  --name mysql-db \
+  --network wp-net \
+  -v wp-db:/var/lib/mysql \
+  -e MYSQL_ROOT_PASSWORD=rootpassword \
+  -e MYSQL_DATABASE=wordpress \
+  -e MYSQL_USER=wpuser \
+  -e MYSQL_PASSWORD=wppassword \
+  mysql:5.7
+[?2004l3042ebbe0c18b4cfa25153dbd3ddb0ca01a3f7ad692c71e1cf6447dc5ae0261d
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7msleep 10[27msleep 10
+[?2004l[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker run -d \[27m
+[7m  --name wordpress \[27m
+[7m  --network wp-net \[27m
+[7m  -v wp-data:/var/www/html \[27m
+[7m  -v "$(pwd)/apache-conf:/etc/apache2/sites-available" \[27m
+[7m  -p 8080:80 \[27m
+[7m  -e WORDPRESS_DB_HOST=mysql-db:3306 \[27m
+[7m  -e WORDPRESS_DB_USER=wpuser \[27m
+[7m  -e WORDPRESS_DB_PASSWORD=wppassword \[27m
+[7m  -e WORDPRESS_DB_NAME=wordpress \[27m
+[7m  wordpress:latest[27m[A[A[A[A[A[A[A[A[A[A[C[C[C[C[C[C[C[C[Cdocker run -d \
+  --name wordpress \
+  --network wp-net \
+  -v wp-data:/var/www/html \
+  -v "$(pwd)/apache-conf:/etc/apache2/sites-available" \
+  -p 8080:80 \
+  -e WORDPRESS_DB_HOST=mysql-db:3306 \
+  -e WORDPRESS_DB_USER=wpuser \
+  -e WORDPRESS_DB_PASSWORD=wppassword \
+  -e WORDPRESS_DB_NAME=wordpress \
+  wordpress:latest
+[?2004l06bf77893686ed85f0b6eab10f04b6b189ece3599bfae42215d15c284536509c
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mdocker ps[27mdocker ps
+[?2004lCONTAINER ID   IMAGE              COMMAND                  CREATED          STATUS          PORTS                                     NAMES
+06bf77893686   wordpress:latest   "docker-entrypoint.s…"   7 seconds ago    Up 7 seconds    0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   wordpress
+3042ebbe0c18   mysql:5.7          "docker-entrypoint.s…"   28 seconds ago   Up 28 seconds   3306/tcp, 33060/tcp                       mysql-db
+[?2004h]0;levdu@Lev: /mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[01;32mlevdu@Lev[00m:[01;34m/mnt/c/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson17[00m$ [7mexit[27mexit
+[?2004lexit
+
+Script done on 2026-02-23 11:13:17+03:00 [COMMAND_EXIT_CODE="0"]
