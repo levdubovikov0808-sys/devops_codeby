@@ -1,9 +1,0 @@
-apiVersion: v1
-kind: Pod
-metadata:
-  name: nginx-declarative
-  namespace: dubovikov
-spec:
-  containers:
-  - name: nginx
-    image: nginx
