@@ -6,24 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="df75252c-1072-46a7-b55a-1efe9c5af6ce" name="Changes" comment="new commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/main.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/subnet_data/main.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/subnet_data/outputs.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/subnet_data/variables.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/subnet_data/versions.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/vm_creator/main.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/vm_creator/outputs.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/vm_creator/variables.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/modules/vm_creator/versions.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/outputs.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson15/variables.tf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson16/Dockerfile.alpine" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson16/Dockerfile.debian" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson16/Dockerfile.multistage" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson16/app" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson17/apache-conf/000-default.conf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lesson17/session.log" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +54,7 @@
     &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;SHELLCHECK.PATH&quot;: &quot;C:\\Users\\levdu\\AppData\\Roaming\\JetBrains\\PyCharm2025.2\\plugins\\Shell Script\\shellcheck.exe&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;lesson18&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;lesson21&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/levdu/PycharmProjects/PythonProjectd/PythonProject/devops/lesson6&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
