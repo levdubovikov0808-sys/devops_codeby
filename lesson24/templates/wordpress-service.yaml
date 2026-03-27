@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "wordpress.fullname" . }}
+  labels:
+    app: wordpress
+    release: {{ .Release.Name }}
+spec:
+  type: {{ .Values.wordpress.service.type }}
+  ports:
+  - port: {{ .Values.wordpress.service.port }}
+    targetPort: http
+    protocol: TCP
+  selector:
+    app: wordpress
+    release: {{ .Release.Name }}
