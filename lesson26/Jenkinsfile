@@ -1,0 +1,202 @@
+// Jenkinsfile - Declarative Pipeline с параллельным выполнением и условными этапами
+pipeline {
+    agent any
+    
+    options {
+        // Отключить параллельные этапы при ошибке одного из них
+        parallelsAlwaysFailFast()
+        // Не сохранять артефакты дольше 7 дней
+        buildDiscarder(logRotator(numToKeepStr: '10', daysToKeepStr: '7'))
+    }
+    
+    environment {
+        // Глобальные переменные
+        MAVEN_HOME = tool 'M3'  // Настройте в Jenkins > Global Tool Configuration
+        JAVA_HOME = tool 'JDK11' // Настройте в Jenkins
+    }
+    
+    stages {
+        stage('Parallel Apps Build & Deploy') {
+            parallel {
+                // ==================== HELLO WORLD ====================
+                stage('Hello World App') {
+                    when {
+                        // Запускать только если есть изменения в папке hello-world
+                        changeset pattern: 'lesson26/hello-world/**', comparator: 'GLOB'
+                    }
+                    agent any
+                    stages {
+                        stage('Checkout') {
+                            steps {
+                                echo "📦 Checking out Hello World app..."
+                                // Checkout только нужной подпапки
+                                dir('lesson26/hello-world') {
+                                    checkout scm
+                                }
+                            }
+                        }
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    echo "🔨 Building Hello World..."
+                                    sh "${MAVEN_HOME}/bin/mvn clean compile -q"
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    echo "🧪 Testing Hello World..."
+                                    sh "${MAVEN_HOME}/bin/mvn test -q"
+                                    // Сбор JUnit отчетов
+                                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+                                }
+                            }
+                        }
+                        stage('Deploy/Run') {
+                            steps {
+                                dir('lesson26/hello-world') {
+                                    echo "🚀 Deploying Hello World..."
+                                    sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
+                                }
+                            }
+                        }
+                    }
+                    post {
+                        success {
+                            echo "✅ Hello World pipeline completed successfully!"
+                        }
+                        failure {
+                            echo "❌ Hello World pipeline failed!"
+                        }
+                        skipped {
+                            echo "⏭️ Hello World stage skipped - no changes detected"
+                        }
+                    }
+                }
+                
+                // ==================== HELLO JENKINS ====================
+                stage('Hello Jenkins App') {
+                    when {
+                        changeset pattern: 'lesson26/hello-jenkins/**', comparator: 'GLOB'
+                    }
+                    agent any
+                    stages {
+                        stage('Checkout') {
+                            steps {
+                                echo "📦 Checking out Hello Jenkins app..."
+                                dir('lesson26/hello-jenkins') {
+                                    checkout scm
+                                }
+                            }
+                        }
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    echo "🔨 Building Hello Jenkins..."
+                                    sh "${MAVEN_HOME}/bin/mvn clean compile -q"
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    echo "🧪 Testing Hello Jenkins..."
+                                    sh "${MAVEN_HOME}/bin/mvn test -q"
+                                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+                                }
+                            }
+                        }
+                        stage('Deploy/Run') {
+                            steps {
+                                dir('lesson26/hello-jenkins') {
+                                    echo "🚀 Deploying Hello Jenkins..."
+                                    sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
+                                }
+                            }
+                        }
+                    }
+                    post {
+                        success {
+                            echo "✅ Hello Jenkins pipeline completed successfully!"
+                        }
+                        failure {
+                            echo "❌ Hello Jenkins pipeline failed!"
+                        }
+                        skipped {
+                            echo "⏭️ Hello Jenkins stage skipped - no changes detected"
+                        }
+                    }
+                }
+                
+                // ==================== HELLO DEVOPS ====================
+                stage('Hello Devops App') {
+                    when {
+                        changeset pattern: 'lesson26/hello-devops/**', comparator: 'GLOB'
+                    }
+                    agent any
+                    stages {
+                        stage('Checkout') {
+                            steps {
+                                echo "📦 Checking out Hello Devops app..."
+                                dir('lesson26/hello-devops') {
+                                    checkout scm
+                                }
+                            }
+                        }
+                        stage('Build') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    echo "🔨 Building Hello Devops..."
+                                    sh "${MAVEN_HOME}/bin/mvn clean compile -q"
+                                }
+                            }
+                        }
+                        stage('Test') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    echo "🧪 Testing Hello Devops..."
+                                    sh "${MAVEN_HOME}/bin/mvn test -q"
+                                    junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
+                                }
+                            }
+                        }
+                        stage('Deploy/Run') {
+                            steps {
+                                dir('lesson26/hello-devops') {
+                                    echo "🚀 Deploying Hello Devops..."
+                                    sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
+                                }
+                            }
+                        }
+                    }
+                    post {
+                        success {
+                            echo "✅ Hello Devops pipeline completed successfully!"
+                        }
+                        failure {
+                            echo "❌ Hello Devops pipeline failed!"
+                        }
+                        skipped {
+                            echo "⏭️ Hello Devops stage skipped - no changes detected"
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    post {
+        always {
+            echo "📊 Pipeline execution finished at ${new Date()}"
+            // Очистка рабочего пространства (опционально)
+            // cleanWs()
+        }
+        success {
+            echo "🎉 All parallel stages completed successfully!"
+        }
+        failure {
+            echo "⚠️ One or more parallel stages failed. Check logs for details."
+        }
+    }
+}
