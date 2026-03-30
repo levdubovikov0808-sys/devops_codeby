@@ -28,7 +28,7 @@ pipeline {
                     stages {
                         stage('Checkout') {
                             steps {
-                                echo "📦 Checking out Hello World app..."
+                                echo "Checking out Hello World app..."
                                 // Checkout только нужной подпапки
                                 dir('lesson26/hello-world') {
                                     checkout scm
@@ -38,7 +38,7 @@ pipeline {
                         stage('Build') {
                             steps {
                                 dir('lesson26/hello-world') {
-                                    echo "🔨 Building Hello World..."
+                                    echo "Building Hello World..."
                                     sh "${MAVEN_HOME}/bin/mvn clean compile -q"
                                 }
                             }
@@ -46,7 +46,7 @@ pipeline {
                         stage('Test') {
                             steps {
                                 dir('lesson26/hello-world') {
-                                    echo "🧪 Testing Hello World..."
+                                    echo "Testing Hello World..."
                                     sh "${MAVEN_HOME}/bin/mvn test -q"
                                     // Сбор JUnit отчетов
                                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
@@ -56,7 +56,7 @@ pipeline {
                         stage('Deploy/Run') {
                             steps {
                                 dir('lesson26/hello-world') {
-                                    echo "🚀 Deploying Hello World..."
+                                    echo "Deploying Hello World..."
                                     sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
                                 }
                             }
@@ -64,13 +64,13 @@ pipeline {
                     }
                     post {
                         success {
-                            echo "✅ Hello World pipeline completed successfully!"
+                            echo "Hello World pipeline completed successfully!"
                         }
                         failure {
-                            echo "❌ Hello World pipeline failed!"
+                            echo "Hello World pipeline failed!"
                         }
                         skipped {
-                            echo "⏭️ Hello World stage skipped - no changes detected"
+                            echo "Hello World stage skipped - no changes detected"
                         }
                     }
                 }
@@ -84,7 +84,7 @@ pipeline {
                     stages {
                         stage('Checkout') {
                             steps {
-                                echo "📦 Checking out Hello Jenkins app..."
+                                echo "Checking out Hello Jenkins app..."
                                 dir('lesson26/hello-jenkins') {
                                     checkout scm
                                 }
@@ -93,7 +93,7 @@ pipeline {
                         stage('Build') {
                             steps {
                                 dir('lesson26/hello-jenkins') {
-                                    echo "🔨 Building Hello Jenkins..."
+                                    echo "Building Hello Jenkins..."
                                     sh "${MAVEN_HOME}/bin/mvn clean compile -q"
                                 }
                             }
@@ -101,7 +101,7 @@ pipeline {
                         stage('Test') {
                             steps {
                                 dir('lesson26/hello-jenkins') {
-                                    echo "🧪 Testing Hello Jenkins..."
+                                    echo "Testing Hello Jenkins..."
                                     sh "${MAVEN_HOME}/bin/mvn test -q"
                                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                                 }
@@ -110,7 +110,7 @@ pipeline {
                         stage('Deploy/Run') {
                             steps {
                                 dir('lesson26/hello-jenkins') {
-                                    echo "🚀 Deploying Hello Jenkins..."
+                                    echo "Deploying Hello Jenkins..."
                                     sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
                                 }
                             }
@@ -118,13 +118,13 @@ pipeline {
                     }
                     post {
                         success {
-                            echo "✅ Hello Jenkins pipeline completed successfully!"
+                            echo "Hello Jenkins pipeline completed successfully!"
                         }
                         failure {
-                            echo "❌ Hello Jenkins pipeline failed!"
+                            echo "Hello Jenkins pipeline failed!"
                         }
                         skipped {
-                            echo "⏭️ Hello Jenkins stage skipped - no changes detected"
+                            echo "Hello Jenkins stage skipped - no changes detected"
                         }
                     }
                 }
@@ -138,7 +138,7 @@ pipeline {
                     stages {
                         stage('Checkout') {
                             steps {
-                                echo "📦 Checking out Hello Devops app..."
+                                echo "Checking out Hello Devops app..."
                                 dir('lesson26/hello-devops') {
                                     checkout scm
                                 }
@@ -147,7 +147,7 @@ pipeline {
                         stage('Build') {
                             steps {
                                 dir('lesson26/hello-devops') {
-                                    echo "🔨 Building Hello Devops..."
+                                    echo "Building Hello Devops..."
                                     sh "${MAVEN_HOME}/bin/mvn clean compile -q"
                                 }
                             }
@@ -155,7 +155,7 @@ pipeline {
                         stage('Test') {
                             steps {
                                 dir('lesson26/hello-devops') {
-                                    echo "🧪 Testing Hello Devops..."
+                                    echo "Testing Hello Devops..."
                                     sh "${MAVEN_HOME}/bin/mvn test -q"
                                     junit allowEmptyResults: true, testResults: 'target/surefire-reports/*.xml'
                                 }
@@ -164,7 +164,7 @@ pipeline {
                         stage('Deploy/Run') {
                             steps {
                                 dir('lesson26/hello-devops') {
-                                    echo "🚀 Deploying Hello Devops..."
+                                    echo "Deploying Hello Devops..."
                                     sh "${MAVEN_HOME}/bin/mvn exec:java -Dexec.mainClass=com.example.App -q"
                                 }
                             }
@@ -172,13 +172,13 @@ pipeline {
                     }
                     post {
                         success {
-                            echo "✅ Hello Devops pipeline completed successfully!"
+                            echo "Hello Devops pipeline completed successfully!"
                         }
                         failure {
-                            echo "❌ Hello Devops pipeline failed!"
+                            echo "Hello Devops pipeline failed!"
                         }
                         skipped {
-                            echo "⏭️ Hello Devops stage skipped - no changes detected"
+                            echo "Hello Devops stage skipped - no changes detected"
                         }
                     }
                 }
@@ -188,15 +188,15 @@ pipeline {
     
     post {
         always {
-            echo "📊 Pipeline execution finished at ${new Date()}"
+            echo "Pipeline execution finished at ${new Date()}"
             // Очистка рабочего пространства (опционально)
             // cleanWs()
         }
         success {
-            echo "🎉 All parallel stages completed successfully!"
+            echo "All parallel stages completed successfully!"
         }
         failure {
-            echo "⚠️ One or more parallel stages failed. Check logs for details."
+            echo "One or more parallel stages failed. Check logs for details."
         }
     }
 }
