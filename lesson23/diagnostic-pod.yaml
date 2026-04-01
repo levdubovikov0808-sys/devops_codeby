@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-viewer
+  namespace: dev
+spec:
+  serviceAccountName: pod-viewer
+  containers:
+  - name: kubectl
+    image: bitnami/kubectl:latest
+    command: ["/bin/sh"]
+    args:
+    - -c
+    - |
+      while true; do
+        echo "===== \$(date) ====="
+        kubectl get pods -n dev
+        sleep 10
+      done

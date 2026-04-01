@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "wordpress.fullname" . }}
+  labels:
+    app: wordpress
+    release: {{ .Release.Name }}
+spec:
+  replicas: {{ .Values.replicaCount }}
+  selector:
+    matchLabels:
+      app: wordpress
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: wordpress
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: wordpress
+        image: "{{ .Values.wordpress.image.repository }}:{{ .Values.wordpress.image.tag }}"
+        imagePullPolicy: {{ .Values.wordpress.image.pullPolicy }}
+        env:
+        - name: WORDPRESS_DB_HOST
+          value: {{ include "mysql.fullname" . }}
+        - name: WORDPRESS_DB_NAME
+          value: {{ .Values.mysql.database }}
+        - name: WORDPRESS_DB_USER
+          value: {{ .Values.mysql.user }}
+        - name: WORDPRESS_DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: wordpress-secret
+              key: wordpress-password
+        ports:
+        - containerPort: 80
+          name: http
+        volumeMounts:
+        - name: wordpress-data
+          mountPath: /var/www/html
+        - name: wordpress-config
+          mountPath: /var/www/html/wp-config.php
+          subPath: wp-config.php
+        resources:
+          {{- toYaml .Values.wordpress.resources | nindent 10 }}
+      volumes:
+      - name: wordpress-data
+        persistentVolumeClaim:
+          claimName: wordpress-pvc
+      - name: wordpress-config
+        configMap:
+          name: wordpress-config
