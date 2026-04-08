@@ -1,0 +1,50 @@
+pipeline {
+    agent any
+    environment {
+        SONAR_HOST_URL = 'http://host.docker.internal:9000'
+        SONAR_TOKEN = credentials('sqa_1fa460e8cde66da1fa3d258145e9885e55b7c286')   // ID учётных данных из Jenkins
+    }
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+            }
+        }
+        stage('SonarQube Analysis') {
+            steps {
+                script {
+                    def apps = ['hello-world', 'hello-jenkins', 'hello-devops']
+                    apps.each { app ->
+                        dir(app) {
+                            withSonarQubeEnv('sonarqube') {
+                                def scannerHome = tool name: 'SonarScanner', type: 'hudson.plugins.sonar.SonarRunnerInstallation'
+                                sh """
+                                    ${scannerHome}/bin/sonar-scanner \
+                                        -Dsonar.projectKey=devops-apps \
+                                        -Dsonar.projectName='DevOps Apps' \
+                                        -Dsonar.sources=. \
+                                        -Dsonar.moduleKey=${app} \
+                                        -Dsonar.moduleName=${app} \
+                                        -Dsonar.language=py \
+                                        -Dsonar.python.version=3
+                                """
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        stage('Quality Gate') {
+            steps {
+                script {
+                    timeout(time: 1, unit: 'HOURS') {
+                        def qg = waitForQualityGate()
+                        if (qg.status != 'OK') {
+                            error "Quality Gate failed: ${qg.status}"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

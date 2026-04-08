@@ -1,0 +1,137 @@
+{
+  "dashboard": {
+    "title": "Reddit App Monitoring",
+    "uid": "reddit-app-dashboard",
+    "version": 1,
+    "timezone": "browser",
+    "editable": true,
+    "graphTooltip": 1,
+    "panels": [
+      {
+        "id": 1,
+        "title": "Total Requests to / (Home)",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 6, "x": 0, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(blackbox_http_request_duration_seconds_count{instance=~\"http://ui:9292/\"}[5m]))",
+            "legendFormat": "Requests/sec"
+          }
+        ],
+        "options": {
+          "fieldOptions": {
+            "defaults": {
+              "unit": "cps",
+              "decimals": 2
+            }
+          }
+        }
+      },
+      {
+        "id": 2,
+        "title": "Total Requests to /new",
+        "type": "stat",
+        "gridPos": {"h": 4, "w": 6, "x": 6, "y": 0},
+        "targets": [
+          {
+            "expr": "sum(rate(blackbox_http_request_duration_seconds_count{instance=~\"http://ui:9292/new\"}[5m]))",
+            "legendFormat": "Requests/sec"
+          }
+        ],
+        "options": {
+          "fieldOptions": {
+            "defaults": {
+              "unit": "cps",
+              "decimals": 2
+            }
+          }
+        }
+      },
+      {
+        "id": 3,
+        "title": "Traffic Rate - / (Home)",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 4},
+        "targets": [
+          {
+            "expr": "rate(blackbox_http_request_duration_seconds_count{instance=~\"http://ui:9292/\"}[1m])",
+            "legendFormat": "Requests/sec"
+          }
+        ],
+        "xaxis": {"mode": "time"},
+        "yaxes": [{"format": "cps", "label": "Requests/sec"}]
+      },
+      {
+        "id": 4,
+        "title": "Traffic Rate - /new",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 12, "x": 0, "y": 12},
+        "targets": [
+          {
+            "expr": "rate(blackbox_http_request_duration_seconds_count{instance=~\"http://ui:9292/new\"}[1m])",
+            "legendFormat": "Requests/sec"
+          }
+        ],
+        "xaxis": {"mode": "time"},
+        "yaxes": [{"format": "cps", "label": "Requests/sec"}]
+      },
+      {
+        "id": 5,
+        "title": "90th Percentile Response Time",
+        "type": "graph",
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 20},
+        "targets": [
+          {
+            "expr": "histogram_quantile(0.9, rate(blackbox_http_request_duration_seconds_bucket{instance=~\"http://ui:9292/(new)?\"}[5m]))",
+            "legendFormat": "{{instance}} - p90"
+          }
+        ],
+        "xaxis": {"mode": "time"},
+        "yaxes": [{"format": "s", "label": "Response Time"}],
+        "alert": {
+          "conditions": [
+            {
+              "evaluator": {"params": [0.5], "type": "gt"},
+              "operator": {"type": "and"},
+              "query": {"params": ["A", "5m", "now"]},
+              "reducer": {"params": [], "type": "avg"},
+              "type": "query"
+            }
+          ],
+          "frequency": "60s",
+          "name": "High Response Time Alert",
+          "noDataState": "ok"
+        }
+      },
+      {
+        "id": 6,
+        "title": "Blackbox Probe Success Rate",
+        "type": "graph",
+        "gridPos": {"h": 6, "w": 12, "x": 0, "y": 28},
+        "targets": [
+          {
+            "expr": "probe_success{job=\"blackbox-http\"}",
+            "legendFormat": "{{instance}}"
+          }
+        ],
+        "yaxes": [{"format": "percentunit", "min": 0, "max": 1}]
+      },
+      {
+        "id": 7,
+        "title": "HTTP Request Duration Heatmap",
+        "type": "heatmap",
+        "gridPos": {"h": 8, "w": 24, "x": 0, "y": 34},
+        "targets": [
+          {
+            "expr": "rate(blackbox_http_request_duration_seconds_bucket{job=\"blackbox-http\"}[5m])",
+            "format": "heatmap",
+            "legendFormat": "{{le}}"
+          }
+        ],
+        "yaxes": [{"format": "s", "decimals": 3}]
+      }
+    ],
+    "time": {"from": "now-1h", "to": "now"},
+    "refresh": "30s"
+  }
+}
