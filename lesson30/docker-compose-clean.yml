@@ -1,0 +1,116 @@
+services:
+  post_db:
+    image: mongo:3.2
+    container_name: post_db
+    volumes:
+      - post_db:/data/db
+    networks:
+      - reddit
+
+  comment_db:
+    image: mongo:3.2
+    container_name: comment_db
+    volumes:
+      - comment_db:/data/db
+    networks:
+      - reddit
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.17.0
+    container_name: elasticsearch
+    environment:
+      - discovery.type=single-node
+      - ES_JAVA_OPTS=-Xms256m -Xmx256m
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
+    ports:
+      - "9200:9200"
+    networks:
+      - reddit
+    restart: unless-stopped
+
+  fluentd:
+    image: quay.io/fluentd_elasticsearch/fluentd:latest
+    container_name: fluentd
+    volumes:
+      - ./fluentd/conf:/fluentd/etc
+      - ./fluentd/parsers:/fluentd/parsers
+    ports:
+      - "24224:24224"
+    networks:
+      - reddit
+    restart: unless-stopped
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.17.0
+    container_name: kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
+    ports:
+      - "5601:5601"
+    networks:
+      - reddit
+    depends_on:
+      - elasticsearch
+    restart: unless-stopped
+
+  post:
+    image: alpine:latest
+    container_name: post
+    command: sh -c "sleep 15 && while true; do echo test; sleep 3; done"
+    depends_on:
+      - post_db
+    networks:
+      - reddit
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: post.service
+
+  comment:
+    image: alpine:latest
+    container_name: comment
+    command: sh -c "sleep 15 && while true; do echo test; sleep 4; done"
+    depends_on:
+      - comment_db
+    networks:
+      - reddit
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: comment.service
+
+  ui:
+    image: alpine:latest
+    container_name: ui
+    ports:
+      - "9292:8080"
+    command: >
+      sh -c "sleep 20 && while true; do
+      echo '2025-01-20 12:34:56,789 INFO [main] com.example.UiController: User login successful';
+      sleep 2;
+      echo '2025-01-20 12:34:58,123 ERROR [http-nio-8080-exec-1] com.example.ErrorHandler: Database connection failed';
+      sleep 3;
+      done"
+    depends_on:
+      - post
+      - comment
+    networks:
+      - reddit
+    logging:
+      driver: fluentd
+      options:
+        fluentd-address: fluentd:24224
+        tag: ui.service
+
+networks:
+  reddit:
+    external: true
+    name: reddit-net
+
+volumes:
+  post_db:
+  comment_db:
+  elasticsearch_data:
