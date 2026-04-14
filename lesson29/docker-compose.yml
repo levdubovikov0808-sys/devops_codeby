@@ -1,0 +1,118 @@
+services:
+  # Reddit Application Services (замена на nginx для тестирования)
+  ui:
+    image: nginx:alpine
+    container_name: reddit-ui
+    ports:
+      - "9292:80"
+    volumes:
+      - ./web-ui:/usr/share/nginx/html
+    networks:
+      - monitoring
+
+  post:
+    image: nginx:alpine
+    container_name: reddit-post
+    ports:
+      - "5000:80"
+    volumes:
+      - ./web-post:/usr/share/nginx/html
+    networks:
+      - monitoring
+
+  comment:
+    image: nginx:alpine
+    container_name: reddit-comment
+    ports:
+      - "9293:80"
+    volumes:
+      - ./web-comment:/usr/share/nginx/html
+    networks:
+      - monitoring
+
+  post_db:
+    image: mongo:3.2
+    container_name: post-db
+    networks:
+      - monitoring
+    volumes:
+      - post_db:/data/db
+
+  comment_db:
+    image: mongo:3.2
+    container_name: comment-db
+    networks:
+      - monitoring
+    volumes:
+      - comment_db:/data/db
+
+  # Monitoring Stack (без изменений)
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./prometheus/alert.rules:/etc/prometheus/alert.rules
+      - prometheus_data:/prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+      - '--storage.tsdb.path=/prometheus'
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+    networks:
+      - monitoring
+    depends_on:
+      - prometheus
+    restart: unless-stopped
+
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor:latest
+    container_name: cadvisor
+    ports:
+      - "8080:8080"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+    privileged: true
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+  blackbox-exporter:
+    image: prom/blackbox-exporter:latest
+    container_name: blackbox-exporter
+    ports:
+      - "9115:9115"
+    volumes:
+      - ./blackbox/blackbox.yml:/etc/blackbox_exporter/config.yml
+    networks:
+      - monitoring
+    restart: unless-stopped
+
+networks:
+  monitoring:
+    driver: bridge
+
+volumes:
+  post_db:
+  comment_db:
+  prometheus_data:
+  grafana_data:

@@ -1,0 +1,16 @@
+# Docker
+docker-compose.override.yml
+*.log
+
+# Elasticsearch data
+elasticsearch-data/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
