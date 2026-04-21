@@ -1,0 +1,82 @@
+version: '3.8'
+
+services:
+  zipkin:
+    image: openzipkin/zipkin:latest
+    container_name: zipkin
+    ports:
+      - "9411:9411"
+    networks:
+      - reddit-net
+
+  post:
+    image: ghcr.io/codeby-devops/post:bug
+    container_name: post
+    environment:
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+      - POST_DATABASE_HOST=mongo-post
+      - POST_DATABASE=posts
+    ports:
+      - "5000:5000"
+    depends_on:
+      - mongo-post
+      - zipkin
+    networks:
+      - reddit-net
+
+  comment:
+    image: ghcr.io/codeby-devops/comment:bug
+    container_name: comment
+    environment:
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+      - COMMENT_DATABASE_HOST=mongo-comment
+      - COMMENT_DATABASE=comments
+    ports:
+      - "9292:9292"
+    depends_on:
+      - mongo-comment
+      - zipkin
+    networks:
+      - reddit-net
+
+  ui:
+    image: ghcr.io/codeby-devops/ui:bug
+    container_name: ui
+    environment:
+      - ZIPKIN_ENDPOINT=http://zipkin:9411/api/v2/spans
+      - POST_SERVICE_HOST=post
+      - POST_SERVICE_PORT=5000
+      - COMMENT_SERVICE_HOST=comment
+      - COMMENT_SERVICE_PORT=9292
+    ports:
+      - "8080:9292"
+    depends_on:
+      - post
+      - comment
+      - zipkin
+    networks:
+      - reddit-net
+
+  mongo-post:
+    image: mongo:4.4
+    container_name: mongo-post
+    volumes:
+      - post-data:/data/db
+    networks:
+      - reddit-net
+
+  mongo-comment:
+    image: mongo:4.4
+    container_name: mongo-comment
+    volumes:
+      - comment-data:/data/db
+    networks:
+      - reddit-net
+
+volumes:
+  post-data:
+  comment-data:
+
+networks:
+  reddit-net:
+    driver: bridge
