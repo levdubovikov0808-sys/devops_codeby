@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shareit-server
+  namespace: shareit
+spec:
+  replicas: {{ .Values.replicaCount.server }}
+  selector:
+    matchLabels:
+      app: shareit-server
+  template:
+    metadata:
+      labels:
+        app: shareit-server
+    spec:
+      containers:
+        - name: server
+          image: "{{ .Values.image.server.repository }}:{{ .Values.image.server.tag }}"
+          ports:
+            - containerPort: 9090

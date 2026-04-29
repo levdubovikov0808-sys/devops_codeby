@@ -1,0 +1,6 @@
+project_name = "java-shareit"
+region       = "ru-9"
+k8s_version  = "1.30"
+node_count   = 2
+node_flavor  = "standard-2-4"
+bucket_name  = "terraform-state"

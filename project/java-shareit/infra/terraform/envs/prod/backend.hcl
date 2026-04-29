@@ -1,0 +1,9 @@
+bucket = "terraform-state"
+key = "java-shareit/prod.tfstate"
+region = "ru-1"
+endpoint = "https://s3.ru-1.storage.selcloud.ru"
+skip_region_validation = true
+skip_credentials_validation = true
+skip_requesting_account_id = true
+skip_s3_checksum = true
+skip_metadata_api_check = true

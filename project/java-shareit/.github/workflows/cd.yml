@@ -1,0 +1,32 @@
+name: CD
+
+on:
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Image tag
+        required: true
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup kubeconfig
+        run: |
+          mkdir -p ~/.kube
+          echo "${KUBECONFIG_B64}" | base64 -d > ~/.kube/config
+        env:
+          KUBECONFIG_B64: ${{ secrets.KUBECONFIG_B64 }}
+
+      - name: Deploy with Helm
+        run: |
+          TAG=${{ github.event.inputs.tag || github.ref_name }}
+          helm upgrade --install java-shareit infra/helm/java-shareit \
+            --namespace shareit \
+            --create-namespace \
+            --set image.tag=${TAG}
