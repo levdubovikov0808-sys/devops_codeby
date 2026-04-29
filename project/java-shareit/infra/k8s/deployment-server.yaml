@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shareit-server
+  namespace: shareit
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: shareit-server
+  template:
+    metadata:
+      labels:
+        app: shareit-server
+    spec:
+      containers:
+        - name: server
+          image: ghcr.io/yourname/java-shareit-server:latest
+          ports:
+            - containerPort: 9090
+          envFrom:
+            - configMapRef:
+                name: shareit-config
+            - secretRef:
+                name: shareit-secret

@@ -1,0 +1,15 @@
+image:
+  gateway:
+    repository: ghcr.io/yourname/java-shareit-gateway
+    tag: latest
+  server:
+    repository: ghcr.io/yourname/java-shareit-server
+    tag: latest
+
+ingress:
+  enabled: true
+  host: shareit.example.com
+
+replicaCount:
+  gateway: 2
+  server: 2
